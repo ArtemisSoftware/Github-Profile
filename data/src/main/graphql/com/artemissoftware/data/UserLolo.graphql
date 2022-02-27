@@ -1,0 +1,9 @@
+query UserLolo($name:String!){
+
+    user(login: $name){
+        avatarUrl,
+        name,
+        login
+    }
+
+}
