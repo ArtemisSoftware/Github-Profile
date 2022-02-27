@@ -1,6 +1,7 @@
 package com.artemissoftware.data
 
 import com.apollographql.apollo3.api.ApolloResponse
+import com.artemissoftware.data.errors.GithubProfileApiNetworkException
 import okio.IOException
 import java.net.SocketTimeoutException
 
@@ -9,13 +10,16 @@ object HandleApolloApi {
     suspend fun <T> safeApiCall(callFunction: suspend () -> T): T {
         return try{
 
-            val response = callFunction.invoke()
+            val apiResponse = callFunction.invoke()
 
-//            val dd = response as ApolloResponse<*>
-//
-//            dd.
+            with(apiResponse as ApolloResponse<*>) {
 
-            response
+                if(hasErrors()){
+                    this.errors?.get(0)?.let { throw GithubProfileApiNetworkException(it.message) }
+                }
+            }
+
+            apiResponse
         }
         catch (ex: Exception){
 
