@@ -3,6 +3,8 @@ package com.artemissoftware.data
 import android.util.Log
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.network.okHttpClient
+import com.artemissoftware.data.errors.GithubProfileApiNetworkException
+import com.artemissoftware.data.remote.sources.GithubSource
 import okhttp3.OkHttpClient
 
 class ff {
@@ -30,6 +32,20 @@ class ff {
             .build()
     }
 
+
+    suspend fun testGet() {
+
+        val client = setupApollo()
+        val gitsource = GithubSource(client)
+        try {
+
+            val response = gitsource.getUserProfile("JakeWharton")
+            Log.d("LaunchList", "Success ${response.data}")
+
+        } catch (ex: GithubProfileApiNetworkException) {
+            //ApiNetworkResponse(error = ex.toApiNetworkError())
+        }
+    }
 
     suspend fun getlolo() {
 

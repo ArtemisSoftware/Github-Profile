@@ -15,8 +15,8 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launchWhenResumed {
 
-            lolo.getlolo()
-
+            //--lolo.getlolo()
+            lolo.testGet()
 
         }
 
