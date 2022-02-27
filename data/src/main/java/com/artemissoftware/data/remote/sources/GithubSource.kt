@@ -7,7 +7,7 @@ import com.artemissoftware.data.remote.HandleApi.safeApiCall
 
 class GithubSource /*@Inject*/ constructor (private val apolloClient: ApolloClient) {
 
-    suspend fun getUserProfile(name: String): ApolloResponse<*> {
+    suspend fun getUserProfile(name: String): ApolloResponse<UserLoloQuery.Data> {
         return safeApiCall {
             apolloClient.query(UserLoloQuery(name = name)).execute()
         }

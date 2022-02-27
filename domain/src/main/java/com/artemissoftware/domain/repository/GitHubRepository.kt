@@ -4,6 +4,6 @@ import com.artemissoftware.domain.models.UserProfile
 
 interface GitHubRepository {
 
-    suspend fun getUserProfile(): ApiNetworkResponse<UserProfile>
+    suspend fun getUserProfile(name: String): ApiNetworkResponse<UserProfile>
 
 }
