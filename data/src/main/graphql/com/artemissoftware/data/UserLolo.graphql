@@ -3,7 +3,71 @@ query UserLolo($name:String!){
     user(login: $name){
         avatarUrl,
         name,
-        login
+        login,
+        followers{
+            totalCount
+        }
+        following{
+            totalCount
+        }
+
+
+        pinnedItems(first: 6, types: REPOSITORY) {
+            nodes {
+                ... on Repository {
+                    name
+                    description
+                    stargazerCount
+                    createdAt
+
+                    languages(first: 1, orderBy: {direction: ASC, field: SIZE}){
+                        nodes{
+                            color
+                            name
+                        }
+                    }
+                }
+            }
+        }
+
+
+        stars: repositories(first: 10, orderBy: {field: STARGAZERS, direction: DESC}) {
+            nodes {
+                name
+                description
+                stargazerCount
+                createdAt
+
+                languages(first: 1, orderBy: {direction: ASC, field: SIZE}){
+                    nodes{
+                        color
+                        name
+                    }
+                }
+            }
+            totalCount
+        }
+
+
+        dateCre:repositories(first: 10, orderBy: {field: CREATED_AT, direction: DESC}) {
+            nodes {
+                name
+                description
+                stargazerCount,
+                createdAt
+
+                languages(first: 1, orderBy: {direction: ASC, field: SIZE}){
+                    nodes{
+                        color
+                        name
+                    }
+                }
+            }
+            totalCount
+        }
     }
+
+
+
 
 }

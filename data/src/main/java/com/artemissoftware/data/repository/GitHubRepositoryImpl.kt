@@ -19,6 +19,7 @@ class GitHubRepositoryImpl @Inject constructor (private val githubSource: Github
 
             val result: ApolloResponse<UserLoloQuery.Data> = githubSource.getUserProfile(name = name)
 
+
             result.data?.let {
                 ApiNetworkResponse(it.toUserProfile())
             } ?: run{
