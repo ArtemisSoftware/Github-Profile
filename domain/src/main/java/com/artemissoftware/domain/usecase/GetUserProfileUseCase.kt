@@ -6,8 +6,9 @@ import com.artemissoftware.domain.models.UserProfile
 import com.artemissoftware.domain.repository.GitHubRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class GetUserProfileUseCase /*@Inject*/ constructor(private val gitHubRepository: GitHubRepository) {
+class GetUserProfileUseCase @Inject constructor(private val gitHubRepository: GitHubRepository) {
 
     operator fun invoke(name : String): Flow<Resource<UserProfile>> = flow {
 

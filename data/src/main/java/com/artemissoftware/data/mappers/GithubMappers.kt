@@ -7,7 +7,7 @@ fun UserLoloQuery.Data.toUserProfile(): UserProfile {
 
     return UserProfile(
         name = user?.name ?: "",
-        avatarUrl = user?.avatarUrl.toString() ?: "",
+        avatarUrl = user?.avatarUrl.toString() ,
         login = user?.login ?: ""
     )
 }

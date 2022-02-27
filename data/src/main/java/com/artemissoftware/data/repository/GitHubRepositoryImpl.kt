@@ -8,8 +8,9 @@ import com.artemissoftware.data.remote.sources.GithubSource
 import com.artemissoftware.domain.models.UserProfile
 import com.artemissoftware.domain.repository.ApiNetworkResponse
 import com.artemissoftware.domain.repository.GitHubRepository
+import javax.inject.Inject
 
-class GitHubRepositoryImpl /*@Inject*/ constructor (private val githubSource: GithubSource):
+class GitHubRepositoryImpl @Inject constructor (private val githubSource: GithubSource):
     GitHubRepository {
 
     override suspend fun getUserProfile(name : String): ApiNetworkResponse<UserProfile> {

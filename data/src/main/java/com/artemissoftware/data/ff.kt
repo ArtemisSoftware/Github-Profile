@@ -6,6 +6,7 @@ import com.apollographql.apollo3.network.okHttpClient
 import com.artemissoftware.data.errors.GithubProfileApiNetworkException
 import com.artemissoftware.data.remote.sources.GithubSource
 import com.artemissoftware.data.repository.GitHubRepositoryImpl
+import com.artemissoftware.domain.repository.GitHubRepository
 import okhttp3.OkHttpClient
 
 class ff {
@@ -33,6 +34,14 @@ class ff {
             .build()
     }
 
+
+    fun getrepo(): GitHubRepository {
+        val client = setupApollo()
+        val gitsource = GithubSource(client)
+        val repo = GitHubRepositoryImpl(gitsource)
+
+        return repo
+    }
 
     suspend fun testGet() {
 
