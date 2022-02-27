@@ -1,11 +1,11 @@
-package com.artemissoftware.data
+package com.artemissoftware.data.remote
 
 import com.apollographql.apollo3.api.ApolloResponse
 import com.artemissoftware.data.errors.GithubProfileApiNetworkException
 import okio.IOException
 import java.net.SocketTimeoutException
 
-object HandleApolloApi {
+object HandleApi {
 
     suspend fun <T> safeApiCall(callFunction: suspend () -> T): T {
         return try{
