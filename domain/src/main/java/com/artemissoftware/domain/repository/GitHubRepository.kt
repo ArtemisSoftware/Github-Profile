@@ -6,4 +6,5 @@ interface GitHubRepository {
 
     suspend fun getUserProfile(name: String): ApiNetworkResponse<UserProfile>
 
+    suspend fun deleteCache()
 }

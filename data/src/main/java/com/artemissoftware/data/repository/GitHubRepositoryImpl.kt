@@ -10,7 +10,9 @@ import com.artemissoftware.domain.repository.ApiNetworkResponse
 import com.artemissoftware.domain.repository.GitHubRepository
 import javax.inject.Inject
 
-class GitHubRepositoryImpl @Inject constructor (private val githubSource: GithubSource):
+class GitHubRepositoryImpl @Inject constructor (
+    private val githubSource: GithubSource
+    ):
     GitHubRepository {
 
     override suspend fun getUserProfile(name : String): ApiNetworkResponse<UserProfile> {
@@ -29,6 +31,10 @@ class GitHubRepositoryImpl @Inject constructor (private val githubSource: Github
         } catch (ex: GithubProfileApiNetworkException) {
             ApiNetworkResponse(error = ex.message)
         }
+    }
+
+    override suspend fun deleteCache() {
+        TODO("Not yet implemented")
     }
 
 
