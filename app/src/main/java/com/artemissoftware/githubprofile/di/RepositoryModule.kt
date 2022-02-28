@@ -21,7 +21,7 @@ object RepositoryModule {
         gitHubSource: GithubSource,
         db: GitHubDataBase,
     ): GitHubRepository {
-        return GitHubRepositoryImpl(gitHubSource, db.userDao)
+        return GitHubRepositoryImpl(gitHubSource, db.userDao, db.repositoryDao)
     }
 
 }

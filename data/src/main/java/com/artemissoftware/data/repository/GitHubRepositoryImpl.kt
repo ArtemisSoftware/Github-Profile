@@ -2,8 +2,11 @@ package com.artemissoftware.data.repository
 
 import com.apollographql.apollo3.api.ApolloResponse
 import com.artemissoftware.data.UserLoloQuery
+import com.artemissoftware.data.database.dao.RepositoryDao
 import com.artemissoftware.data.database.dao.UserDao
 import com.artemissoftware.data.errors.GithubProfileApiNetworkException
+import com.artemissoftware.data.mappers.toRepositorysEntities
+import com.artemissoftware.data.mappers.toUserEntity
 import com.artemissoftware.data.mappers.toUserProfile
 import com.artemissoftware.data.remote.sources.GithubSource
 import com.artemissoftware.domain.models.UserProfile
@@ -13,7 +16,8 @@ import javax.inject.Inject
 
 class GitHubRepositoryImpl @Inject constructor (
     private val githubSource: GithubSource,
-    private val userDao: UserDao
+    private val userDao: UserDao,
+    private val repositoryDao: RepositoryDao
     ):
     GitHubRepository {
 
@@ -22,7 +26,6 @@ class GitHubRepositoryImpl @Inject constructor (
         return try {
 
             val result: ApolloResponse<UserLoloQuery.Data> = githubSource.getUserProfile(name = name)
-
 
             result.data?.let {
                 ApiNetworkResponse(it.toUserProfile())
@@ -39,8 +42,13 @@ class GitHubRepositoryImpl @Inject constructor (
         userDao.deleteUsers()
     }
 
-    override suspend fun getCachedUserProfile(): UserProfile {
-        TODO("Not yet implemented")
+    override suspend fun getCachedUserProfile(): UserProfile? {
+        return userDao.getUserAndRepositories()?.toUserProfile()
+    }
+
+    override suspend fun cacheUserProfile(userProfile: UserProfile) {
+        userDao.insertUser(userProfile.toUserEntity())
+        repositoryDao.insertRepositories(userProfile.toRepositorysEntities(userProfile.name))
     }
 
 

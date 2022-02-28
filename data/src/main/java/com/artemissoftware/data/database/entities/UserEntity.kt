@@ -2,6 +2,8 @@ package com.artemissoftware.data.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.artemissoftware.data.database.converters.DateConverter
 import java.util.*
 
 @Entity(tableName = "user")

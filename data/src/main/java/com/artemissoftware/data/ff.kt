@@ -35,28 +35,7 @@ class ff {
     }
 
 
-    fun getrepo(): GitHubRepository {
-        val client = setupApollo()
-        val gitsource = GithubSource(client)
-        val repo = GitHubRepositoryImpl(gitsource)
 
-        return repo
-    }
-
-    suspend fun testGet() {
-
-        val client = setupApollo()
-        val gitsource = GithubSource(client)
-        val repo = GitHubRepositoryImpl(gitsource)
-        try {
-
-            val response = repo.getUserProfile("JakeWharton")
-            Log.d("LaunchList", "Success ${response.data}")
-
-        } catch (ex: GithubProfileApiNetworkException) {
-            //ApiNetworkResponse(error = ex.toApiNetworkError())
-        }
-    }
 
     suspend fun getlolo() {
 

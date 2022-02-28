@@ -21,7 +21,7 @@ object DataBaseModule {
             app,
             GitHubDataBase::class.java, "github_db"
         )
-            .addTypeConverter(DateConverter)
+            //.addTypeConverter(DateConverter)
             .build()
     }
 }

@@ -15,5 +15,5 @@ interface UserDao {
 
     @Transaction
     @Query("SELECT * FROM user")
-    suspend fun getUserAndRepositories(): List<UserAndRepositories>
+    suspend fun getUserAndRepositories(): UserAndRepositories?
 }
