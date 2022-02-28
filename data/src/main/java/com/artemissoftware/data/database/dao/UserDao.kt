@@ -1,10 +1,8 @@
 package com.artemissoftware.data.database.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.artemissoftware.data.database.entities.UserEntity
+import com.artemissoftware.data.database.relations.UserAndRepositories
 
 @Dao
 interface UserDao {
@@ -14,4 +12,8 @@ interface UserDao {
 
     @Query("DELETE FROM user")
     suspend fun deleteUsers()
+
+    @Transaction
+    @Query("SELECT * FROM user")
+    suspend fun getUserAndRepositories(): List<UserAndRepositories>
 }

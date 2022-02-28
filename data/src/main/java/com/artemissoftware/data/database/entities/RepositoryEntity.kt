@@ -16,8 +16,8 @@ import java.util.*
 
 )
 data class RepositoryEntity(
-    @PrimaryKey val userName: String,
-    val name: String,
+    val userName: String,
+    @PrimaryKey val name: String,
     val description: String,
     val stargazerCount: Int,
     val createdAt: Date,
