@@ -17,6 +17,9 @@ class GetUserProfileUseCase @Inject constructor(private val gitHubRepository: Gi
 
         apiResult.data?.let {
 
+
+
+
             emit(Resource.Success(it))
 
         } ?: run{
