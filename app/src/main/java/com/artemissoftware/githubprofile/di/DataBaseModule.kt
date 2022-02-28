@@ -3,6 +3,7 @@ package com.artemissoftware.githubprofile.di
 import android.app.Application
 import androidx.room.Room
 import com.artemissoftware.data.database.GitHubDataBase
+import com.artemissoftware.data.database.converters.DateConverter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,7 +21,7 @@ object DataBaseModule {
             app,
             GitHubDataBase::class.java, "github_db"
         )
-            //.addTypeConverter(Converters(GsonParser(Gson())))
-        .build()
+            .addTypeConverter(DateConverter)
+            .build()
     }
 }

@@ -14,6 +14,7 @@ class GetUserProfileUseCase @Inject constructor(private val gitHubRepository: Gi
 
         val apiResult = gitHubRepository.getUserProfile(name = name)
 
+        gitHubRepository.deleteCache()
 
         apiResult.data?.let {
 
