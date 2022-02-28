@@ -2,6 +2,7 @@ package com.artemissoftware.data.repository
 
 import com.apollographql.apollo3.api.ApolloResponse
 import com.artemissoftware.data.UserLoloQuery
+import com.artemissoftware.data.database.dao.UserDao
 import com.artemissoftware.data.errors.GithubProfileApiNetworkException
 import com.artemissoftware.data.mappers.toUserProfile
 import com.artemissoftware.data.remote.sources.GithubSource
@@ -11,7 +12,8 @@ import com.artemissoftware.domain.repository.GitHubRepository
 import javax.inject.Inject
 
 class GitHubRepositoryImpl @Inject constructor (
-    private val githubSource: GithubSource
+    private val githubSource: GithubSource,
+    private val userDao: UserDao
     ):
     GitHubRepository {
 
@@ -34,6 +36,10 @@ class GitHubRepositoryImpl @Inject constructor (
     }
 
     override suspend fun deleteCache() {
+        userDao.deleteUsers()
+    }
+
+    override suspend fun getCachedUserProfile(): UserProfile {
         TODO("Not yet implemented")
     }
 
