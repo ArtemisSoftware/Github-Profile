@@ -38,18 +38,16 @@ class GitHubRepositoryImpl @Inject constructor (
         }
     }
 
-    override suspend fun deleteCache() {
-        userDao.deleteUsers()
-    }
-
     override suspend fun getCachedUserProfile(): UserProfile? {
         return userDao.getUserAndRepositories()?.toUserProfile()
     }
 
-    override suspend fun cacheUserProfile(userProfile: UserProfile) {
+    override suspend fun refreshCache(userProfile: UserProfile) {
+        userDao.deleteUsers()
         userDao.insertUser(userProfile.toUserEntity())
         repositoryDao.insertRepositories(userProfile.toRepositorysEntities(userProfile.name))
     }
+
 
 
 }
