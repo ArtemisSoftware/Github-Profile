@@ -1,5 +1,7 @@
 package com.artemissoftware.githubprofile.ui.databinding
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -31,6 +33,15 @@ fun setImage(imageView: ImageView, image: String?) {
             .load(it)
             .transition(DrawableTransitionOptions.withCrossFade(500))
             .into(imageView)
+    }
+
+}
+
+@BindingAdapter("setTint")
+fun setImageTint(imageView: ImageView, tint: String?){
+
+    tint?.let {
+        imageView.setColorFilter(Color.parseColor(it), PorterDuff.Mode.SRC_IN)
     }
 
 }

@@ -3,6 +3,7 @@ package com.artemissoftware.githubprofile.ui
 import com.artemissoftware.domain.models.Resource
 import com.artemissoftware.domain.usecase.GetUserProfileUseCase
 import com.artemissoftware.domain.usecase.RefreshUserProfileUseCase
+import com.artemissoftware.githubprofile.util.TestProfiles.PROFILE
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -29,7 +30,7 @@ class GithubProfilePresenter @Inject constructor(
 
         launch {
 
-            getUserProfileUseCase.invoke("JakeWharton")
+            getUserProfileUseCase.invoke(PROFILE)
                 .onEach { result ->
                     when(result) {
                         is Resource.Success -> {
@@ -50,7 +51,7 @@ class GithubProfilePresenter @Inject constructor(
 
         launch {
 
-            refreshUserProfileUseCase.invoke("JakeWharton")
+            refreshUserProfileUseCase.invoke(PROFILE)
                 .onEach { result ->
                     when(result) {
                         is Resource.Success -> {

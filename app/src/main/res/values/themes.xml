@@ -14,6 +14,20 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.GithubProfile.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
     <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
         <item name="cornerSize">50%</item>
     </style>
@@ -53,6 +67,21 @@
     <style name="text16.sourcesanspro_semi_bold.black" parent="text16.sourcesanspro_semi_bold">
         <item name="android:textColor">@color/textblack</item>
     </style>
+
+
+
+    <style name="text20">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="text20.sourcesanspro_semi_bold" parent="text20">
+        <item name="fontFamily">@font/sourcesanspro_semibold</item>
+    </style>
+
+    <style name="text20.sourcesanspro_semi_bold.black" parent="text20.sourcesanspro_semi_bold">
+        <item name="android:textColor">@color/textblack</item>
+    </style>
+
 
 
     <style name="text24">

@@ -35,16 +35,29 @@
             android:paddingBottom="24dp">
 
 
+            <TextView
+                android:id="@+id/txt_titulo"
+                style="@style/text20.sourcesanspro_semi_bold.black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/profile"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView"
                 android:layout_width="88dp"
                 android:layout_height="88dp"
+                android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_titulo"
                 app:setImage="@{user.avatarUrl}"
-                tools:src="@tools:sample/avatars"
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-                />
+                tools:src="@tools:sample/avatars" />
 
 
 
