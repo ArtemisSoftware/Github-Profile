@@ -15,7 +15,6 @@ import kotlin.coroutines.CoroutineContext
 
 
 class GithubProfilePresenter @Inject constructor(
-    //private val view: GithubProfileContract.View,
     private val getUserProfileUseCase: GetUserProfileUseCase,
     private val refreshUserProfileUseCase: RefreshUserProfileUseCase
 ) : GithubProfileContract.Presenter, CoroutineScope {

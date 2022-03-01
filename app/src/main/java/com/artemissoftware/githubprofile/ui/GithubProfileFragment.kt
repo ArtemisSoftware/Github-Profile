@@ -1,8 +1,10 @@
 package com.artemissoftware.githubprofile.ui
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.artemissoftware.domain.models.UserProfile
 import com.artemissoftware.domain.usecase.GetUserProfileUseCase
@@ -52,6 +54,21 @@ class GithubProfileFragment : Fragment(R.layout.fragment_github_profile), Github
 
        presenter.getProfile()
     }
+
+//    override fun onCreateView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        _binding = FragmentGithubProfileBinding.inflate(inflater, container, false)
+//        val view = binding.swipeContainer
+//        return view
+//    }
+//
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        _binding = null
+//    }
 
     private fun init() {
         binding.swipeContainer.setOnRefreshListener {
@@ -112,8 +129,6 @@ class GithubProfileFragment : Fragment(R.layout.fragment_github_profile), Github
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
+
 }
