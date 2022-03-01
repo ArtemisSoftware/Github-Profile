@@ -17,4 +17,67 @@
     <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
         <item name="cornerSize">50%</item>
     </style>
+
+
+    <style name="repoCard">
+        <item name="strokeColor">@color/silver</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardCornerRadius">16dp</item>
+    </style>
+
+    <style name="repoCard.small" parent="repoCard">
+        <item name="android:layout_width">200dp</item>
+    </style>
+
+
+    <style name="text16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+
+
+
+    <style name="text16.sourcesanspro_regular" parent="text16">
+        <item name="fontFamily">@font/sourcesanspro_regular</item>
+    </style>
+
+    <style name="text16.sourcesanspro_regular.black" parent="text16.sourcesanspro_regular">
+        <item name="android:textColor">@color/textblack</item>
+    </style>
+
+    <style name="text16.sourcesanspro_semi_bold" parent="text16">
+        <item name="fontFamily">@font/sourcesanspro_semibold</item>
+    </style>
+
+    <style name="text16.sourcesanspro_semi_bold.black" parent="text16.sourcesanspro_semi_bold">
+        <item name="android:textColor">@color/textblack</item>
+    </style>
+
+
+    <style name="text24">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="text24.sourcesanspro_semi_bold" parent="text24">
+        <item name="fontFamily">@font/sourcesanspro_semibold</item>
+    </style>
+
+    <style name="text24.sourcesanspro_semi_bold.black" parent="text24.sourcesanspro_semi_bold">
+        <item name="android:textColor">@color/textblack</item>
+    </style>
+
+
+    <style name="text32">
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="text32.sourcesanspro_semi_bold" parent="text32">
+        <item name="fontFamily">@font/sourcesanspro_semibold</item>
+    </style>
+
+    <style name="text32.sourcesanspro_semi_bold.black" parent="text32.sourcesanspro_semi_bold">
+        <item name="android:textColor">@color/textblack</item>
+    </style>
+
 </resources>

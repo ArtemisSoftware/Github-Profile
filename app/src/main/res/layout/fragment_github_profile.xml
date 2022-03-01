@@ -14,6 +14,11 @@
     </data>
 
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swipeContainer">
+    
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -53,6 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{user.name}"
+            style="@style/text32.sourcesanspro_semi_bold.black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -62,6 +68,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{user.login}"
+            style="@style/text16.sourcesanspro_regular.black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/txt_name"
             app:layout_constraintStart_toStartOf="@+id/txt_name"
@@ -75,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="TextView"
+        style="@style/text16.sourcesanspro_regular.black"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -84,6 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@{Integer.valueOf(user.followers).toString()}"
+        style="@style/text16.sourcesanspro_semi_bold.black"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -93,6 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/followers"
+        style="@style/text16.sourcesanspro_regular.black"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -103,6 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="@{Integer.valueOf(user.following).toString()}"
+        style="@style/text16.sourcesanspro_semi_bold.black"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -113,6 +124,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/following"
+        style="@style/text16.sourcesanspro_regular.black"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -131,6 +143,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/pinned"
+            style="@style/text24.sourcesanspro_semi_bold.black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -140,6 +153,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/view_all"
+            style="@style/text16.sourcesanspro_semi_bold.black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -170,6 +184,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/top_repositories"
+            style="@style/text24.sourcesanspro_semi_bold.black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -179,6 +194,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/view_all"
+            style="@style/text16.sourcesanspro_semi_bold.black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -208,6 +224,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/starred_repositories"
+            style="@style/text24.sourcesanspro_semi_bold.black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -217,6 +234,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/view_all"
+            style="@style/text16.sourcesanspro_semi_bold.black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -236,4 +254,6 @@
 
     </androidx.core.widget.NestedScrollView>
 
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

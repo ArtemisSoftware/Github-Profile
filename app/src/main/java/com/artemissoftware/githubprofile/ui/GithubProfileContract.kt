@@ -10,5 +10,6 @@ interface GithubProfileContract {
 
     interface Presenter {
         fun getProfile()
+        fun refreshProfile()
     }
 }
