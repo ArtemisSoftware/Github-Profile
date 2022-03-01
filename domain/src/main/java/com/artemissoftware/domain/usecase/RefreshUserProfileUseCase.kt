@@ -29,7 +29,6 @@ class RefreshUserProfileUseCase @Inject constructor(private val gitHubRepository
             else{
                 emit(Resource.Error<UserProfile>(message = apiResult.error!!))
             }
-            //--throw ApiDataException(apiResult.error)
         }
 
     }
