@@ -1,9 +1,10 @@
-query UserLolo($name:String!){
+query UserQuery($name:String!){
 
     user(login: $name){
         avatarUrl,
         name,
         login,
+        email,
         followers{
             totalCount
         }

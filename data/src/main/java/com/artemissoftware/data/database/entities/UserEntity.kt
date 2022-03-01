@@ -8,7 +8,7 @@ import java.util.*
 
 @Entity(tableName = "user")
 data class UserEntity(
-
+    val email: String,
     val avatarUrl: String,
     @PrimaryKey val name: String,
     val login: String,

@@ -1,7 +1,7 @@
 package com.artemissoftware.data.repository
 
 import com.apollographql.apollo3.api.ApolloResponse
-import com.artemissoftware.data.UserLoloQuery
+import com.artemissoftware.data.UserQuery
 import com.artemissoftware.data.database.dao.RepositoryDao
 import com.artemissoftware.data.database.dao.UserDao
 import com.artemissoftware.data.errors.GithubProfileApiNetworkException
@@ -25,7 +25,7 @@ class GitHubRepositoryImpl @Inject constructor (
 
         return try {
 
-            val result: ApolloResponse<UserLoloQuery.Data> = githubSource.getUserProfile(name = name)
+            val result: ApolloResponse<UserQuery.Data> = githubSource.getUserProfile(name = name)
 
             result.data?.let {
                 ApiNetworkResponse(it.toUserProfile())

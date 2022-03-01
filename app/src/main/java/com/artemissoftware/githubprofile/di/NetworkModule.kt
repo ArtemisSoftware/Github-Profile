@@ -3,6 +3,8 @@ package com.artemissoftware.githubprofile.di
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.network.okHttpClient
 import com.artemissoftware.data.remote.sources.GithubSource
+import com.artemissoftware.githubprofile.util.ApiConstants.BASE_URL
+import com.artemissoftware.githubprofile.util.ApiConstants.GITHUB_PROFILE_KEY
 
 import dagger.Module
 import dagger.Provides
@@ -14,8 +16,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
-    private val BASE_URL = "https://api.github.com/graphql"
 
     @Provides
     @Singleton
@@ -29,7 +29,7 @@ object NetworkModule {
                     original.body
                 )
                 builder.addHeader(
-                    "Authorization", "Bearer " + "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"
+                    "Authorization", GITHUB_PROFILE_KEY
                 )
                 chain.proceed(builder.build())
             }

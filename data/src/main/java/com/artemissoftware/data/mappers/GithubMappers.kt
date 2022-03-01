@@ -1,7 +1,6 @@
 package com.artemissoftware.data.mappers
 
-import androidx.room.PrimaryKey
-import com.artemissoftware.data.UserLoloQuery
+import com.artemissoftware.data.UserQuery
 import com.artemissoftware.data.database.entities.RepositoryEntity
 import com.artemissoftware.data.database.entities.UserEntity
 import com.artemissoftware.data.database.relations.UserAndRepositories
@@ -10,12 +9,13 @@ import com.artemissoftware.domain.models.UserProfile
 import java.util.*
 
 
-fun UserLoloQuery.Data.toUserProfile(): UserProfile {
+fun UserQuery.Data.toUserProfile(): UserProfile {
 
     return UserProfile(
         name = user?.name ?: "",
         avatarUrl = user?.avatarUrl.toString() ,
         login = user?.login ?: "",
+        email = user?.email ?: "",
         followers = user?.followers?.totalCount ?: 0,
         following = user?.following?.totalCount ?: 0,
         pinnedRepo = (user?.pinnedItems?.nodes?.map { it?.toRepository() } ?: emptyList<Repository>()) as List<Repository>,
@@ -24,7 +24,7 @@ fun UserLoloQuery.Data.toUserProfile(): UserProfile {
     )
 }
 
-fun UserLoloQuery.Node.toRepository(): Repository {
+fun UserQuery.Node.toRepository(): Repository {
 
     return Repository(
         name = onRepository?.name ?: "",
@@ -35,7 +35,7 @@ fun UserLoloQuery.Node.toRepository(): Repository {
     )
 }
 
-fun UserLoloQuery.Node2.toRepository(): Repository {
+fun UserQuery.Node2.toRepository(): Repository {
 
     return Repository(
         name = name,
@@ -48,7 +48,7 @@ fun UserLoloQuery.Node2.toRepository(): Repository {
 
 
 
-fun UserLoloQuery.Node4.toRepository(): Repository {
+fun UserQuery.Node4.toRepository(): Repository {
 
     return Repository(
         name = name,
@@ -66,6 +66,7 @@ fun UserAndRepositories.toUserProfile(): UserProfile{
         name = this.userEntity.name,
         avatarUrl = this.userEntity.avatarUrl,
         login = this.userEntity.login,
+        email = this.userEntity.email,
         followers = this.userEntity.followers,
         following = this.userEntity.following,
         expirationDate = this.userEntity.expirationDate,
@@ -99,6 +100,7 @@ fun UserProfile.toUserEntity(): UserEntity{
     date = calendar.time
 
     return UserEntity(
+        email = email,
         name = name,
         avatarUrl = avatarUrl,
         login = login,

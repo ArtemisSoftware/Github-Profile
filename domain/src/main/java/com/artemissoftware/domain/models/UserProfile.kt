@@ -8,6 +8,7 @@ data class UserProfile(
     val login: String,
     val followers: Int,
     val following: Int,
+    val email: String,
     val expirationDate: Date? = null ,
     val pinnedRepo: List<Repository>,
     val starRepo: List<Repository>,
