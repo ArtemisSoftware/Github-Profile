@@ -9,6 +9,7 @@ import com.artemissoftware.domain.usecase.GetUserProfileUseCase
 import com.artemissoftware.githubprofile.R
 import com.artemissoftware.githubprofile.databinding.FragmentGithubProfileBinding
 import com.artemissoftware.githubprofile.ui.profile.adapters.RepositoryListAdapter
+import com.artemissoftware.githubprofile.ui.profile.adapters.SmallRepositoryListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -22,7 +23,9 @@ class GithubProfileFragment : Fragment(R.layout.fragment_github_profile), Github
     private val binding get() = _binding!!
 
     private lateinit var presenter: GithubProfilePresenter
-    private val listAdapter by lazy { RepositoryListAdapter() }
+    private val pinnedListAdapter by lazy { RepositoryListAdapter() }
+    private val starredListAdapter by lazy { SmallRepositoryListAdapter() }
+    private val topListAdapter by lazy { SmallRepositoryListAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -32,8 +35,21 @@ class GithubProfileFragment : Fragment(R.layout.fragment_github_profile), Github
 
 
         binding.rclPinned.apply {
-            adapter = listAdapter
+            adapter = pinnedListAdapter
             layoutManager = LinearLayoutManager(requireContext())
+
+        }
+
+
+        binding.rclTop.apply {
+            adapter = topListAdapter
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        }
+
+        binding.rclStar.apply {
+            adapter = starredListAdapter
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
         }
 
@@ -44,7 +60,13 @@ class GithubProfileFragment : Fragment(R.layout.fragment_github_profile), Github
     override fun showUserProfile(userProfile: UserProfile) {
 
         binding.user = userProfile
-        listAdapter.userProfile = userProfile
-        listAdapter.submitList(userProfile.pinnedRepo)
+        pinnedListAdapter.userProfile = userProfile
+        pinnedListAdapter.submitList(userProfile.pinnedRepo)
+
+        topListAdapter.userProfile = userProfile
+        topListAdapter.submitList(userProfile.topRepo)
+
+        starredListAdapter.userProfile = userProfile
+        starredListAdapter.submitList(userProfile.starRepo)
     }
 }

@@ -14,11 +14,15 @@
     </data>
 
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.GithubProfileFragment"
-    android:paddingHorizontal="16dp">
+    android:paddingHorizontal="16dp"
+    android:paddingBottom="24dp">
 
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -146,26 +150,26 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcl_pinned"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout_pinned"
         tools:layout_editor_absoluteX="16dp"
         tools:listitem="@layout/item_repository" />
 
 
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/rcl_pinned">
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/rcl_pinned"
+        tools:layout_editor_absoluteX="16dp">
 
         <TextView
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@string/top_repositories"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -174,7 +178,7 @@
             android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@string/view_all"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -185,8 +189,10 @@
         android:id="@+id/rcl_top"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        tools:listitem="@layout/item_repository"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout_top" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout_top"
+        tools:layout_editor_absoluteX="16dp"
+        tools:listitem="@layout/item_repository_small" />
 
 
 
@@ -194,13 +200,14 @@
         android:id="@+id/constraintLayout_star"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         app:layout_constraintTop_toBottomOf="@+id/rcl_top">
 
         <TextView
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@string/starred_repositories"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -209,7 +216,7 @@
             android:id="@+id/textView15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@string/view_all"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -220,9 +227,13 @@
         android:id="@+id/rcl_star"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        tools:listitem="@layout/item_repository"
+        android:layout_marginTop="16dp"
+        tools:listitem="@layout/item_repository_small"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout_star" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 </layout>
