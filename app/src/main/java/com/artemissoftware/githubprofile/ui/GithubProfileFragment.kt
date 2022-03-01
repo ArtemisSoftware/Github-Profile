@@ -15,7 +15,7 @@ import javax.inject.Inject
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.artemissoftware.domain.usecase.RefreshUserProfileUseCase
-
+import com.google.android.material.snackbar.Snackbar
 
 
 
@@ -44,12 +44,16 @@ class GithubProfileFragment : Fragment(R.layout.fragment_github_profile), Github
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-
         _binding = FragmentGithubProfileBinding.bind(view)
         binding.lifecycleOwner = this
         presenter.view = this
 
+        init()
 
+       presenter.getProfile()
+    }
+
+    private fun init() {
         binding.swipeContainer.setOnRefreshListener {
             presenter.refreshProfile()
         }
@@ -61,28 +65,22 @@ class GithubProfileFragment : Fragment(R.layout.fragment_github_profile), Github
             android.R.color.holo_red_light
         )
 
-
         binding.rclPinned.apply {
             adapter = pinnedListAdapter
             layoutManager = LinearLayoutManager(requireContext())
-
         }
-
 
         binding.rclTop.apply {
             adapter = topListAdapter
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-
         }
 
         binding.rclStar.apply {
             adapter = starredListAdapter
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-
         }
-
-       presenter.getProfile()
     }
+
 
     override fun showUserProfile(userProfile: UserProfile) {
 
@@ -91,16 +89,31 @@ class GithubProfileFragment : Fragment(R.layout.fragment_github_profile), Github
         topListAdapter.userProfile = userProfile
         starredListAdapter.userProfile = userProfile
 
-
-
         binding.swipeContainer.isRefreshing = false
 
-        activity?.runOnUiThread(java.lang.Runnable {
+        activity?.runOnUiThread {
             pinnedListAdapter.submitList(userProfile.pinnedRepo)
             topListAdapter.submitList(userProfile.topRepo)
             starredListAdapter.submitList(userProfile.starRepo)
-        })
+        }
+    }
 
+    override fun showError(message: String) {
+        val snackbar =
+            Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        snackbar.show()
 
+        binding.swipeContainer.isRefreshing = false
+    }
+
+    override fun showLoading(show: Boolean) {
+        activity?.runOnUiThread {
+            binding.progressBar.visibility = if(show) View.VISIBLE else View.GONE
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

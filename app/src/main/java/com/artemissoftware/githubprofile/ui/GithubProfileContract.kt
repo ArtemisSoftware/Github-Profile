@@ -6,6 +6,8 @@ interface GithubProfileContract {
 
     interface View {
         fun showUserProfile(userProfile: UserProfile)
+        fun showError(message: String)
+        fun showLoading(show: Boolean)
     }
 
     interface Presenter {

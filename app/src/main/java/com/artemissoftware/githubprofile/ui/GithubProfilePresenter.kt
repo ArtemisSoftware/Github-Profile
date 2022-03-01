@@ -36,12 +36,12 @@ class GithubProfilePresenter @Inject constructor(
                             view?.showUserProfile(result.data!!)
                         }
                         is Resource.Error -> {
-
-                        }
-                        is Resource.Loading -> {
-
+                            view?.showError(result.message!!)
                         }
                     }
+
+                    view?.showLoading(result is Resource.Loading)
+
                 }.launchIn(this)
         }
     }
@@ -57,12 +57,12 @@ class GithubProfilePresenter @Inject constructor(
                             view?.showUserProfile(result.data!!)
                         }
                         is Resource.Error -> {
-
-                        }
-                        is Resource.Loading -> {
-
+                            view?.showError(result.message!!)
                         }
                     }
+
+                    view?.showLoading(result is Resource.Loading)
+
                 }.launchIn(this)
         }
     }

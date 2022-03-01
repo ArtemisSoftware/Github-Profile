@@ -13,19 +13,26 @@ class GetUserProfileUseCase @Inject constructor(private val gitHubRepository: Gi
 
     operator fun invoke(name : String): Flow<Resource<UserProfile>> = flow {
 
+        emit(Resource.Loading())
+
         val userProfile = gitHubRepository.getCachedUserProfile()
 
         if(requestData(userProfile)){
 
-            val apiResult = gitHubRepository.getUserProfile(name = name)
+            if(name.isBlank()){
+                emit(Resource.Error<UserProfile>(message = INVALID_PARAMETER))
+            }
+            else{
+                val apiResult = gitHubRepository.getUserProfile(name = name)
 
-            apiResult.data?.let {
+                apiResult.data?.let {
 
-                gitHubRepository.refreshCache(it)
-                emit(Resource.Success(it))
+                    gitHubRepository.refreshCache(it)
+                    emit(Resource.Success(it))
 
-            } ?: run{
-                throw ApiDataException(apiResult.error)
+                } ?: run{
+                    emit(Resource.Error<UserProfile>(message = apiResult.error!!))
+                }
             }
         }
         else{
@@ -38,4 +45,8 @@ class GetUserProfileUseCase @Inject constructor(private val gitHubRepository: Gi
     }
 
 
+    companion object{
+
+        const val INVALID_PARAMETER = "Invalid parameter"
+    }
 }

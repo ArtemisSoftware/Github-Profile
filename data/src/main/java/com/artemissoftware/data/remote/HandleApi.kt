@@ -1,6 +1,7 @@
 package com.artemissoftware.data.remote
 
 import com.apollographql.apollo3.api.ApolloResponse
+import com.apollographql.apollo3.exception.ApolloNetworkException
 import com.artemissoftware.data.errors.GithubProfileApiNetworkException
 import okio.IOException
 import java.net.SocketTimeoutException
@@ -23,14 +24,13 @@ object HandleApi {
         }
         catch (ex: Exception){
 
-//                e.printStackTrace()
-//                Log.e("BaseRemoteRepo", "Call error: ${e.localizedMessage}", e.cause)
             when(ex){
 
-                is ClassCastException -> throw ex
-                is SocketTimeoutException -> throw ex//emitter.onError(ErrorType.TIMEOUT)
-                is IOException -> throw ex//emitter.onError(ErrorType.NETWORK)
-                else -> throw ex//emitter.onError(ErrorType.UNKNOWN)
+                is ApolloNetworkException -> throw GithubProfileApiNetworkException(ex.message.toString())
+                is ClassCastException -> throw GithubProfileApiNetworkException(ex.message.toString())
+                is SocketTimeoutException -> throw GithubProfileApiNetworkException(ex.message.toString())
+                is IOException -> throw GithubProfileApiNetworkException(ex.message.toString())
+                else -> throw GithubProfileApiNetworkException(ex.message.toString())
             }
         }
     }
