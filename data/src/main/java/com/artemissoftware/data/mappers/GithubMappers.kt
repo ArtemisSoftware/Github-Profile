@@ -19,8 +19,8 @@ fun UserLoloQuery.Data.toUserProfile(): UserProfile {
         followers = user?.followers?.totalCount ?: 0,
         following = user?.following?.totalCount ?: 0,
         pinnedRepo = (user?.pinnedItems?.nodes?.map { it?.toRepository() } ?: emptyList<Repository>()) as List<Repository>,
-        starRepo = (user?.stars?.nodes?.map { it?.toRepository_() } ?: emptyList<Repository>()) as List<Repository>,
-        topRepo = (user?.top?.nodes?.map { it?.toRepository_() } ?: emptyList<Repository>()) as List<Repository>
+        starRepo = (user?.stars?.nodes?.map { it?.toRepository() } ?: emptyList<Repository>()) as List<Repository>,
+        topRepo = (user?.top?.nodes?.map { it?.toRepository() } ?: emptyList<Repository>()) as List<Repository>
     )
 }
 
@@ -35,7 +35,7 @@ fun UserLoloQuery.Node.toRepository(): Repository {
     )
 }
 
-fun UserLoloQuery.Node2.toRepository_(): Repository {
+fun UserLoloQuery.Node2.toRepository(): Repository {
 
     return Repository(
         name = name,
@@ -48,7 +48,7 @@ fun UserLoloQuery.Node2.toRepository_(): Repository {
 
 
 
-fun UserLoloQuery.Node4.toRepository_(): Repository {
+fun UserLoloQuery.Node4.toRepository(): Repository {
 
     return Repository(
         name = name,
@@ -57,22 +57,6 @@ fun UserLoloQuery.Node4.toRepository_(): Repository {
         languageColor = languages?.nodes?.get(0)?.color ?: "",
         language = languages?.nodes?.get(0)?.name  ?: "",
     )
-}
-
-fun UserLoloQuery.Node2.toRepository(): List<Repository> {
-
-
-
-    return emptyList()
-}
-
-fun UserLoloQuery.Node4.toRepository(): List<Repository> {
-    return emptyList()
-}
-
-
-fun UserLoloQuery.Node3.toRepository(): List<Repository> {
-    return emptyList()
 }
 
 
@@ -147,31 +131,3 @@ fun Repository.toRepositoryEntity(name : String, type: Int): RepositoryEntity{
 
 }
 
-//fun UserProfile.toUserEntity(): UserEntity {
-//
-//    return UserEntity(
-//        avatarUrl = avatarUrl,
-//        name = name,
-//        login = login,
-//        followers = followers,
-//        following = following,
-//        expirationDate = Date() + 24H
-//    )
-//}
-
-
-
-//fun UserProfile.toRepositoryEntity(type: Int, userName: String): List<RepositoryEntity> {
-//
-//
-//    return RepositoryEntity(
-//        userName = userName,
-//        name = String,
-//        description = String,
-//        stargazerCount = Int,
-//        createdAt = Date,
-//       languageColor = String,
-//        language = String,
-//        type = type
-//    )
-//}

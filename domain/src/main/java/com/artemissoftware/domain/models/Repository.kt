@@ -9,6 +9,4 @@ data class Repository(
     val stargazerCount: Int,
     val languageColor : String,
     val language: String,
-
-
 )

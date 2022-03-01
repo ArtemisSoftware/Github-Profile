@@ -1,7 +1,5 @@
 package com.artemissoftware.githubprofile.ui
 
-import android.util.Log
-import androidx.lifecycle.lifecycleScope
 import com.artemissoftware.domain.models.Resource
 import com.artemissoftware.domain.usecase.GetUserProfileUseCase
 import kotlinx.coroutines.CoroutineScope
