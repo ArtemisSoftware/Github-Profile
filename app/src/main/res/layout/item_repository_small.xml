@@ -71,7 +71,7 @@
             style="@style/text16.sourcesanspro_regular.black"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="4dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@{repository.description}"
